@@ -28,7 +28,7 @@ defmodule FnExpr.Mixfile do
       version: @version,
       elixir:  "~> 1.4",
       name: "FnExpr",
-      description: "The && operator simplifies using inline functions in your pipes",
+      description: "The && operator (and invoke macro) for use with |> and anonymous functions / captures",
       package: @package,
       source_url: @git_url,
       homepage_url: @home_url,
