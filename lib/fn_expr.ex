@@ -106,6 +106,30 @@ defmodule FnExpr do
   end
 
   @doc"""
+  Sometimes when working with piped operations, you might end up with a
+  null value, and that's OK, but you would love to provde a defaulted value
+  before continuing.
+
+  For example,
+
+        raw_input
+        |> SomeOtherModule.process_all
+        |> List.first
+        |> default(%{id: "test_id"})
+        |> Map.get(id)
+
+  In the above, there is a chance that there were no widgets to process,
+  but that's OK, you will just default it to a *near* empty map to allow
+  it to flow through to `&Map.get/2` without throwing an exception
+  """
+  def default(piped_in_argument, default_value) do
+    case piped_in_argument do
+      nil -> default_value
+      _ -> piped_in_argument
+    end
+  end
+
+  @doc"""
   Creates function expression specifically to be used with the pipe operator.
 
   Here is a (contrived) example showing how it can be used

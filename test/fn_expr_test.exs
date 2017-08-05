@@ -18,4 +18,9 @@ defmodule FnExprTest do
     assert E2.total_pieces_on(board) == "Total pieces: 4"
   end
 
+  test "default" do
+    assert "a" == FnExpr.default("a", "b")
+    assert "b" == FnExpr.default(nil, "b")
+  end
+
 end
