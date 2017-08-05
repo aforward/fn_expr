@@ -4,7 +4,7 @@ defmodule FnExpr.Mixfile do
   @app :fn_expr
   @git_url "https://github.com/aforward/fn_expr"
   @home_url @git_url
-  @version "0.1.0"
+  @version "0.1.1"
 
   @deps [
     {:mix_test_watch, "~> 0.3", only: :dev, runtime: false},
