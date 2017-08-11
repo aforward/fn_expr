@@ -9,7 +9,7 @@ defmodule FnExpr.Mixfile do
   @deps [
     {:mix_test_watch, "~> 0.3", only: :dev, runtime: false},
     {:ex_doc,  "0.16.1", only: [ :dev, :test ]},
-    {:version_tasks,  "~> 0.9.2"},
+    {:version_tasks,  "~> 0.10"},
   ]
 
   @package [
