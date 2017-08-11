@@ -97,7 +97,7 @@
 
 ```elixir
 @deps [
-  fn_expr: "~> 0.1.1"
+  fn_expr: "~> 0.2.0"
 ]
 ```
 
