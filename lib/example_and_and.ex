@@ -8,5 +8,4 @@ defmodule FnExpr.ExampleAndAnd do
     |> FnExpr.&&(Atom.to_string(&1) <> "__post")
     |> FnExpr.&&(String.to_atom("pre__" <> &1))
   end
-
 end

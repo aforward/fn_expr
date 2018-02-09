@@ -8,8 +8,8 @@ defmodule FnExpr.Mixfile do
 
   @deps [
     {:mix_test_watch, "~> 0.3", only: :dev, runtime: false},
-    {:ex_doc,  "0.16.1", only: [ :dev, :test ]},
-    {:version_tasks,  "~> 0.10"},
+    {:ex_doc, "0.16.1", only: [:dev, :test]},
+    {:version_tasks, "~> 0.10"}
   ]
 
   @package [
@@ -23,31 +23,31 @@ defmodule FnExpr.Mixfile do
   # ------------------------------------------------------------
 
   def project do
-    in_production = Mix.env == :prod
+    in_production = Mix.env() == :prod
+
     [
-      app:     @app,
+      app: @app,
       version: @version,
-      elixir:  "~> 1.4",
+      elixir: "~> 1.6",
       name: "FnExpr",
-      description: "The && operator (and invoke macro) for use with |> and anonymous functions / captures",
+      description:
+        "The && operator (and invoke macro) for use with |> and anonymous functions / captures",
       package: @package,
       source_url: @git_url,
       homepage_url: @home_url,
-      docs: [main: "FnExpr",
-             extras: ["README.md"]],
-      build_embedded:  in_production,
-      start_permanent:  in_production,
-      deps:    @deps,
+      docs: [main: "FnExpr", extras: ["README.md"]],
+      build_embedded: in_production,
+      start_permanent: in_production,
+      deps: @deps
     ]
-
   end
 
   def application do
     [
-      extra_applications: [         # built-in apps that need starting
+      # built-in apps that need starting
+      extra_applications: [
         :logger
-      ],
+      ]
     ]
   end
-
 end

@@ -5,13 +5,13 @@ defmodule FnExpr.ExampleInvoke do
 
   def piece_count(board) do
     board
-    |> Enum.reduce({0, 0}, fn(piece, {black, white}) ->
-          case piece do
-            :black -> {black+1, white}
-            :white -> {black, white+1}
-            _ -> {black, white}
-          end
-       end)
+    |> Enum.reduce({0, 0}, fn piece, {black, white} ->
+      case piece do
+        :black -> {black + 1, white}
+        :white -> {black, white + 1}
+        _ -> {black, white}
+      end
+    end)
   end
 
   def total_pieces_on(board) do
@@ -26,5 +26,4 @@ defmodule FnExpr.ExampleInvoke do
     |> invoke({Atom.to_string(&1), "__post"})
     |> invoke(fn {middle, last} -> String.to_atom("pre__" <> middle <> last) end)
   end
-
 end

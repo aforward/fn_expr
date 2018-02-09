@@ -1,6 +1,5 @@
 defmodule FnExpr do
-
-  @moduledoc"""
+  @moduledoc """
   Creates immediately invoked function expressions specifically
   [IIFE](http://benalman.com/news/2010/11/immediately-invoked-function-expression/)
   to be used with the pipe operator.
@@ -97,15 +96,23 @@ defmodule FnExpr do
     quote do
       defmacro invoke(piped_in_argument, expr) do
         fun = is_tuple(expr) && elem(expr, 0)
+
         case fun do
-          :fn -> quote do (unquote(expr)).(unquote(piped_in_argument)) end
-          _ -> quote do (&(unquote(expr))).(unquote(piped_in_argument)) end
+          :fn ->
+            quote do
+              unquote(expr).(unquote(piped_in_argument))
+            end
+
+          _ ->
+            quote do
+              (&unquote(expr)).(unquote(piped_in_argument))
+            end
         end
       end
     end
   end
 
-  @doc"""
+  @doc """
   Sometimes when working with piped operations, you might end up with a
   null value, and that's OK, but you would love to provde a defaulted value
   before continuing.
@@ -129,7 +136,7 @@ defmodule FnExpr do
     end
   end
 
-  @doc"""
+  @doc """
   Creates function expression specifically to be used with the pipe operator.
 
   Here is a (contrived) example showing how it can be used
@@ -142,8 +149,7 @@ defmodule FnExpr do
   """
   defmacro unquote(:&&)(piped_in_argument, expr) do
     quote do
-      (&(unquote(expr))).(unquote(piped_in_argument))
+      (&unquote(expr)).(unquote(piped_in_argument))
     end
   end
-
 end

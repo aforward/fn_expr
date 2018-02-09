@@ -22,5 +22,4 @@ defmodule FnExprTest do
     assert "a" == FnExpr.default("a", "b")
     assert "b" == FnExpr.default(nil, "b")
   end
-
 end
